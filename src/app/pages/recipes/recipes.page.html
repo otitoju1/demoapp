@@ -1,0 +1,19 @@
+
+<ion-content fullscreen>
+  <ion-row>
+    <ion-col size="4" *ngFor="let recipe of recipes; let i = index;">
+      <ion-card>
+        <img src={{recipe.img}} />
+        <ion-card-header>
+          <ion-card-subtitle>Destination</ion-card-subtitle>
+          <ion-card-title class="alert alert-success">{{recipe.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{recipe.content}}
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    
+  </ion-row>
+  
+</ion-content>

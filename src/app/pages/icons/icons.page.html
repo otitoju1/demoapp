@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Passes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <img src="../../../assets/h1.jpg" />
+    </ion-slide>
+    <ion-slide>
+      <img src="../../../assets/h2.jpg" />
+    </ion-slide>
+    <ion-slide>
+      <img src="../../../assets/h1.jpg" />
+    </ion-slide>
+  </ion-slides>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-icon name="arrow-down-outline"></ion-icon>
+        <app-checkin></app-checkin>
+        <p>06-02-2022</p>
+      </ion-col>
+      <ion-col>
+        <ion-icon name="arrow-up-outline"></ion-icon>
+        <p>07-02-2022</p>
+      </ion-col>
+      <ion-col>
+        <ion-icon name="person-outline"></ion-icon>
+        <p>Jane doe</p>
+      </ion-col>
+    </ion-row>
+  
+  </ion-grid>
+</ion-content>

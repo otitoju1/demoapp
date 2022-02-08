@@ -1,0 +1,10 @@
+<ol class="list-group list-group-numbered">
+  <li class="list-group-item d-flex justify-content-between align-items-start" *ngFor="let d of data">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">{{d.name}}</div>
+      <p>{{d.email}}</p>
+      <p>{{d.company}}</p>
+    </div>
+    <span class="badge bg-primary rounded-pill">{{index}}</span>
+  </li>
+</ol>

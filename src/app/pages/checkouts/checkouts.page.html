@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Check-out list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let d of data | slice:5:10; let i = index">
+      <ion-label>
+        <h2>{{d.name}}</h2>
+        <p>Email: {{d.email}}</p>
+        <p>Address: {{ parseAddress(d.address) }}</p>
+        <p>Company: {{parseCompany(d.company)}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
