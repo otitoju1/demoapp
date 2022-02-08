@@ -26,6 +26,10 @@ export class LoginService {
     return this.httpService.post('/api/v1/login', postData)
   }
 
+  getQrCode() {
+    return this.httpService.get('/api/v1/qrcode')
+  }
+
   logout() {
     this.storageService.removeStorageItem(AuthConstants.AUTH).then( res => {
       this.router.navigate(['/login'])

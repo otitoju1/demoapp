@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-icons',
   templateUrl: './icons.page.html',
@@ -11,15 +11,25 @@ export class IconsPage implements OnInit {
     initialSlide: 1,
     speed: 400
   };
-  data:any[] = []
 
-  constructor(public dataService: DataService) { }
+  data:any[] = []
+  qrData: any = ''
+
+  constructor(
+    public dataService: DataService, 
+    private loginService: LoginService
+    ) { }
   
   ngOnInit() {
     this.dataService.getUsers().subscribe((res:any) => {
       this.data = res
       console.log(res)
     })
+
+    this.loginService.getQrCode().subscribe((res: any) => {
+      this.qrData = res.code
+    })
+
   }
 
   parseAddress(address){
@@ -31,5 +41,7 @@ export class IconsPage implements OnInit {
     const parsedCompany = `${company.name}`
     return parsedCompany;
   }
+
+
 
 }

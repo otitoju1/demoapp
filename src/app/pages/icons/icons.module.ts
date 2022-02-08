@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
 
 import { IconsPageRoutingModule } from './icons-routing.module';
@@ -15,7 +14,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FormsModule,
     IonicModule,
     IconsPageRoutingModule,
-    SharedModule
+    SharedModule,
   ],
   declarations: [IconsPage]
 })
