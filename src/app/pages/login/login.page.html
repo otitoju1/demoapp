@@ -14,8 +14,7 @@
       <ion-label position="stacked">Password</ion-label>
       <ion-input autocomplete="off" type="password" name="password" [(ngModel)]="postData.password"></ion-input>
     </ion-item>
-
-    <ion-button expand="block" share="round" color="success" (click)="_login()">Login</ion-button>
+    <ion-button expand="block" share="round" color="success" (click)="_login()">{{!isLoggedIn ? 'Login': 'Loading...'}}</ion-button>
   </ion-list>
 </form>
 </ion-content>

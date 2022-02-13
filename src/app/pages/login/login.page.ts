@@ -11,7 +11,7 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
- 
+  isLoggedIn: boolean = false
   postData: any = {
     email: '',
     password: ''
@@ -51,12 +51,14 @@ export class LoginPage implements OnInit {
   }
 
   _login() {
+    this.isLoggedIn = true;
     if(this.validateInputs()) {
       this.service.login(this.postData).subscribe((res:any) => {
         console.log(res);
         if(res) {
           // store the data
           // this.tokenStorage.store(AuthConstants.AUTH, res.token)
+          this.isLoggedIn = false;
           this.tokenStorage.saveUser(AuthConstants.TOKEN_KEY, res.token)
           this.tokenStorage.saveUser(AuthConstants.USER_KEY, res.info)
           this.tokenStorage.saveQR(AuthConstants.QR_DATA, res.qrcode)
@@ -64,14 +66,17 @@ export class LoginPage implements OnInit {
         }
         else {
           this.toastService.presentToast(res.message)
+          this.isLoggedIn = false;
         }
       }, (error:any) => {
         console.log(error)
         this.toastService.presentToast(error.message)
+        this.isLoggedIn = false;
       })
     }
     else {
       this.toastService.presentToast('Please enter email or password')
+      this.isLoggedIn = false;
     }
   }
 
