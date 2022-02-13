@@ -8,7 +8,7 @@ import { PhotoService} from '../../services/photo.service';
 })
 export class GalleryPage implements OnInit {
 
-  constructor(private photoService: PhotoService) { }
+  constructor(public photoService: PhotoService) { }
 
   ngOnInit() {
   }
