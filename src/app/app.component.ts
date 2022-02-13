@@ -11,6 +11,7 @@ export class AppComponent {
     { title:"Check-outs", url:"checkouts", icon:"arrow-up" },
     { title:"Barcode scanner", url:"barcode", icon:"scan" },
     { title:"Login", url:"login", icon:"arrow-forward-circle" },
+    { title:"Gallery", url:"gallery", icon:"images" },
   ];
   public labels = [ ];
   constructor() {}
