@@ -31,7 +31,7 @@ export class LoginService {
   }
 
   logout() {
-    this.storageService.removeStorageItem(AuthConstants.AUTH).then( res => {
+    this.storageService.removeStorageItem(AuthConstants.TOKEN_KEY).then( res => {
       this.router.navigate(['/login'])
     })
   }

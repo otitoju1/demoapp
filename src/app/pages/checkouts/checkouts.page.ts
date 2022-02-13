@@ -9,7 +9,9 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class CheckoutsPage implements OnInit {
   data:any[] = []
-
+  isLoading: boolean = true
+  skeletonLoader:any = [1,2,3,4,5,6]
+  
   constructor(private service: DataService) { }
 
   ngOnInit() {
@@ -18,7 +20,8 @@ export class CheckoutsPage implements OnInit {
 
   getDatas() {
     this.service.getUsers().subscribe((res:any) => {
-      this.data = res;
+      this.data = res.info;
+      this.isLoading = false;
       console.log(res)
     })
   }

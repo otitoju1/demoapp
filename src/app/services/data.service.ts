@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 })
 
 export class DataService {
-  private baseUrl = `${environment.apiUrl} + /api/v1/users`
+  baseUrl = `https://otitoju-server.herokuapp.com/api/v1/users`
 
   constructor(private http: HttpClient) { }
 

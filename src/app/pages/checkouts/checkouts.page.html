@@ -10,9 +10,19 @@
       <ion-label>
         <h2>{{d.name}}</h2>
         <p>Email: {{d.email}}</p>
-        <p>Address: {{ parseAddress(d.address) }}</p>
-        <p>Company: {{parseCompany(d.company)}}</p>
+        <p>Address: {{ d.address }}</p>
+        <p>Tel: {{d.phone}}</p>
       </ion-label>
     </ion-item>
   </ion-list>
+
+  <div *ngIf="isLoading">
+    <div class="ion-padding custom-skeleton" *ngFor="let i of skeletonLoader">
+      <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+    </div>
+  </div>
 </ion-content>

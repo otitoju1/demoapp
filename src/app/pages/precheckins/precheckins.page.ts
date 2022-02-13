@@ -8,7 +8,10 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./precheckins.page.scss'],
 })
 export class PrecheckinsPage implements OnInit {
-  data:any[] = []
+  data:any[] = [];
+  isLoading: boolean = true;
+  skeletonLoader:any = [1,2,3,4,5,6]
+  
   constructor(private service: DataService) { }
 
   ngOnInit() {
@@ -17,18 +20,19 @@ export class PrecheckinsPage implements OnInit {
 
   getDatas() {
     this.service.getUsers().subscribe((res:any) => {
-      this.data = res
+      this.data = res.info
+      this.isLoading = false;
     })
   }
 
-  parseAddress(address){
-    const parsedAddress = `${address.suite}, ${address.street}, ${address.city} ${address.zipcode}`;
-    return parsedAddress;
-  }
+  // parseAddress(address){
+  //   const parsedAddress = `${address.suite}, ${address.street}, ${address.city} ${address.zipcode}`;
+  //   return parsedAddress;
+  // }
 
-  parseCompany(company) {
-    const parsedCompany = `${company.name}`
-    return parsedCompany;
-  }
+  // parseCompany(company) {
+  //   const parsedCompany = `${company.name}`
+  //   return parsedCompany;
+  // }
 
 }

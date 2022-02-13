@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { parse } from 'querystring';
 import { DataService } from 'src/app/services/data.service';
 import { LoginService } from 'src/app/services/login.service';
+import { TokenStorageService } from 'src/app/services/tokenStorage.service';
 @Component({
   selector: 'app-icons',
   templateUrl: './icons.page.html',
@@ -14,21 +16,27 @@ export class IconsPage implements OnInit {
 
   data:any[] = []
   qrData: any = ''
+  user:any = {}
 
   constructor(
     public dataService: DataService, 
-    private loginService: LoginService
+    private loginService: LoginService,
+    private tokenService: TokenStorageService
     ) { }
   
   ngOnInit() {
+    const qr = this.tokenService.getToken('qrData')
+    const userData:any = this.tokenService.getToken('userData')
+    this.user = JSON.parse(userData)
+    this.qrData = qr
     this.dataService.getUsers().subscribe((res:any) => {
-      this.data = res
+      this.data = res.info
       console.log(res)
     })
 
-    this.loginService.getQrCode().subscribe((res: any) => {
-      this.qrData = res.code
-    })
+    // this.loginService.getQrCode().subscribe((res: any) => {
+    //   this.qrData = res.code
+    // })
 
   }
 

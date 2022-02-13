@@ -6,14 +6,27 @@
 
 <ion-content>
   <ion-list>
+    
+    <p *ngIf="isLoading" class="text-center">Loading data...</p>
     <ion-item *ngFor="let d of data; let i = index">
       <ion-label>
         <h2>Name: {{d.name}}</h2>
-        <p>Username: {{d.username}}</p>
         <p>Email: {{d.email}}</p>
-        <p>Address: {{ parseAddress(d.address) }}</p>
-        <p>Company: {{parseCompany(d.company)}}</p>
+        <p>Address: {{ d.address }}</p>
+        <p>Tel: {{ d.phone }}</p>
       </ion-label>
     </ion-item>
   </ion-list>
+
+  <!-- Skeleton screen -->
+<div *ngIf="isLoading">
+  <div class="ion-padding custom-skeleton" *ngFor="let i of skeletonLoader">
+    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+  </div>
+</div>
+
 </ion-content>

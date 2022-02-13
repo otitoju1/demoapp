@@ -4,7 +4,7 @@ import { TokenStorageService } from 'src/app/services/tokenStorage.service';
 import { AuthConstants } from 'src/app/config/auth-constants';
 import { Router } from '@angular/router'
 import { ToastService } from 'src/app/services/toast.service';
-
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -22,12 +22,25 @@ export class LoginPage implements OnInit {
     private service: LoginService, 
     private tokenStorage: TokenStorageService, 
     private router: Router,
-    private toastService: ToastService
+    private toastService: ToastService,
+    public loadingController: LoadingController
     ) { }
 
   ngOnInit() {
     
   }
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Please wait...',
+    });
+    await loading.present()
+    
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!', role);
+  }
+
+  
 
   validateInputs() {
     let email = this.postData.email.trim()
@@ -39,14 +52,15 @@ export class LoginPage implements OnInit {
 
   _login() {
     if(this.validateInputs()) {
-      console.log(this.postData)
-      console.log(this.postData.email)
-      console.log(this.postData.password)
       this.service.login(this.postData).subscribe((res:any) => {
+        console.log(res);
         if(res) {
           // store the data
-          this.tokenStorage.store(AuthConstants.AUTH, res.token)
-          this.router.navigate(['/precheckins'])
+          // this.tokenStorage.store(AuthConstants.AUTH, res.token)
+          this.tokenStorage.saveUser(AuthConstants.TOKEN_KEY, res.token)
+          this.tokenStorage.saveUser(AuthConstants.USER_KEY, res.info)
+          this.tokenStorage.saveQR(AuthConstants.QR_DATA, res.qrcode)
+          this.router.navigate(['/icons'])
         }
         else {
           this.toastService.presentToast(res.message)
@@ -60,6 +74,8 @@ export class LoginPage implements OnInit {
       this.toastService.presentToast('Please enter email or password')
     }
   }
+
+  
 
   
 }
