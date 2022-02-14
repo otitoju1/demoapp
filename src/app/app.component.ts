@@ -12,7 +12,7 @@ export class AppComponent {
     { title:"Barcode scanner", url:"barcode", icon:"scan" },
     { title:"Login", url:"login", icon:"arrow-forward-circle" },
     { title:"Gallery", url:"gallery", icon:"images" },
-    { title:"Logout", url:"", icon:"power", },
+    { title:"Logout", url:"/", icon:"power", },
   ];
   public labels = [ ];
   
