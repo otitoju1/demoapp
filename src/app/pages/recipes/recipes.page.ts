@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { RecipeService } from 'src/app/services/recipe.service';
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.page.html',
@@ -7,31 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipesPage implements OnInit {
   
-  public recipes = [
-    {
-    title: "Rice and Beans", img: "../../../assets/tower.jpg", content: "Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836."
-  },
-  {
-    title: "Amala", img: "../../../assets/tower.jpg", content: "Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836."
-  },
-  {
-    title: "Semovita", img: "../../../assets/tower.jpg", content: "Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836."
-  },
-  {
-    title: "Spaghetti", img: "../../../assets/tower.jpg", content: "Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836....."
-  },
-  {
-    title: "Smoke Fish", img: "../../../assets/tower.jpg", content: "Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836."
-  },
-  {
-    title: "Indomie", img: "../../../assets/tower.jpg", content: "Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836....."
-  },
-]
+  public recipes = []
+  length = 50
+  start = 0
+  isLoading: boolean = true;
+  skeletonLoader:any = [1,2,3,4,5,6]
 
-  constructor() { }
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
-    console.log(this.recipes)
+    this.recipeService.getRecipes().subscribe((res:any) => {
+      this.recipes = res.info
+      this.isLoading = false
+      console.log(res)
+    }, (error:any) => {
+      console.log(error.message)
+    })
   }
 
 }

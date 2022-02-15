@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { usersData, User } from './data';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
@@ -9,7 +8,7 @@ import { environment } from '../../environments/environment';
 })
 
 export class DataService {
-  baseUrl = `https://otitoju-server.herokuapp.com/api/v1/users`
+  baseUrl = `${environment.apiUrl}/api/v1/users`
 
   constructor(private http: HttpClient) { }
 

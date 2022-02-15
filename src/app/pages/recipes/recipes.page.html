@@ -1,24 +1,36 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-title class="ion-text-center"> Available Recipes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
+  <p *ngIf="isLoading" class="text-center">Loading Recipes...</p>
   <ion-list>
-    <ion-list-header> Available Reciepes </ion-list-header>
-
     <ion-item *ngFor="let recipe of recipes; let i = index;">
       <ion-avatar slot="start">
-        <img src={{recipe.img}} />
+        <img src={{recipe.photo}} />
       </ion-avatar>
       <ion-label>
-        <h2>{{recipe.title}}</h2>
-        <p>{{recipe.content}}</p>
+        <h2>{{recipe.name}}</h2>
+        <p>{{recipe.method.substring(start, length)}}</p>
+        <h6>{{recipe.date.toLocaleString()}}</h6>
       </ion-label>
     </ion-item>
   </ion-list>
+
+   <!-- Skeleton screen -->
+<div *ngIf="isLoading">
+  <div class="ion-padding custom-skeleton" *ngFor="let i of skeletonLoader">
+    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+  </div>
+</div>
   
 </ion-content>
