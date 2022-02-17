@@ -54,6 +54,10 @@ const routes: Routes = [
   {
     path: 'registermodal',
     loadChildren: () => import('./modal/registermodal/registermodal.module').then( m => m.RegistermodalPageModule)
+  },
+  {
+    path: 'update-recipe',
+    loadChildren: () => import('./modal/update-recipe/update-recipe.module').then( m => m.UpdateRecipePageModule)
   }
 ];
 

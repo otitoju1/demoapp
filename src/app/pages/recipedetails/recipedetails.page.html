@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start" *ngIf="!isLoading">
+    <ion-buttons (click)="openModal()" slot="start" *ngIf="!isLoading">
       <ion-icon name="create-outline" color="secondary"></ion-icon>
     </ion-buttons>
     <ion-buttons slot="end" *ngIf="!isLoading">

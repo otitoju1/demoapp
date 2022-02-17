@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeService } from '../../services/recipe.service';
+import { ModalController } from '@ionic/angular';
+import { UpdateRecipePage } from 'src/app/modal/update-recipe/update-recipe.page';
 
 @Component({
   selector: 'app-recipedetails',
@@ -13,7 +15,7 @@ export class RecipedetailsPage implements OnInit {
   skeletonLoader:any = [1,2]
 
   constructor(private activatedRoute: ActivatedRoute,
-     private recipeService: RecipeService) { }
+     private recipeService: RecipeService, private modalController: ModalController) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe( paramMap => {
@@ -28,5 +30,10 @@ export class RecipedetailsPage implements OnInit {
       })
     })
   }
-
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: UpdateRecipePage,
+    });
+    return await modal.present();
+  }
 }

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons (click)="closeModal()" slot="end" color="primary">
+      Close <ion-icon name="add-outline"></ion-icon>
+   </ion-buttons>
+    <ion-title>Update Recipe</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center">
+    <h1>Update Recipe</h1>
+  </div>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Recipe name</ion-label>
+        <ion-input autocomplete="off" type="text" name="title"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Ingredients</ion-label>
+        <ion-textarea></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Method</ion-label>
+        <ion-textarea></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <input type="file" />
+      </ion-item>
+      <ion-button expand="block" share="round" color="success" >Update</ion-button>
+    </ion-list>
+  </form>
+</ion-content>
