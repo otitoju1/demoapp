@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="!isLoading">
+      <ion-icon name="create-outline" color="secondary"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="end" *ngIf="!isLoading">
+      <ion-icon name="trash-outline" color="danger"></ion-icon>
+    </ion-buttons>
+    <ion-title>{{fetchedRecipe.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid ngClass="no-padding">
+    <ion-row>
+      <ion-col ngClass="no-padding">
+        <ion-img [src]="fetchedRecipe.photo"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+         <h1 ngClass="text-center">{{fetchedRecipe.name}}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h3 *ngIf="!isLoading">INGREDIENT</h3>
+         <p>{{fetchedRecipe.ingredient}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h3 *ngIf="!isLoading">METHOD</h3>
+         <p>{{fetchedRecipe.method}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngIf="isLoading">
+    <div class="ion-padding custom-skeleton" *ngFor="let i of skeletonLoader">
+      <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+    </div>
+  </div>
+</ion-content>

@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { RecipesPageRoutingModule } from './recipes-routing.module';
 
 import { RecipesPage } from './recipes.page';
-
+import { RegistermodalPage } from '../../modal/registermodal/registermodal.page'
 @NgModule({
   imports: [
     CommonModule,

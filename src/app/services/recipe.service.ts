@@ -12,4 +12,8 @@ export class RecipeService {
   getRecipes() {
     return this.service.get("/api/v1/recipes")
   }
+
+  getRecipe(recipeId:string) {
+    return this.service.get(`/api/v1/recipe/${recipeId}`)
+  }
 }

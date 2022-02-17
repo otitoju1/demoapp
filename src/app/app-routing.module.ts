@@ -46,6 +46,14 @@ const routes: Routes = [
   {
     path: 'icons',
     loadChildren: () => import('./pages/icons/icons.module').then( m => m.IconsPageModule)
+  },
+  {
+    path: 'recipedetails/:recipeId',
+    loadChildren: () => import('./pages/recipedetails/recipedetails.module').then( m => m.RecipedetailsPageModule)
+  },
+  {
+    path: 'registermodal',
+    loadChildren: () => import('./modal/registermodal/registermodal.module').then( m => m.RegistermodalPageModule)
   }
 ];
 
