@@ -20,4 +20,8 @@ export class RecipeService {
   updateRecipe(recipeId:string, updateData:any) {
     return this.service.update(`/api/v1/recipe/${recipeId}`, updateData)
   }
+
+  deleteRecipe(recipeId:string) {
+    return this.service.delete(`/api/v1/recipe/${recipeId}`)
+  }
 }

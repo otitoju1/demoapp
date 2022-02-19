@@ -51,14 +51,7 @@ const routes: Routes = [
     path: 'recipedetails/:recipeId',
     loadChildren: () => import('./pages/recipedetails/recipedetails.module').then( m => m.RecipedetailsPageModule)
   },
-  {
-    path: 'registermodal',
-    loadChildren: () => import('./modal/registermodal/registermodal.module').then( m => m.RegistermodalPageModule)
-  },
-  {
-    path: 'update-recipe',
-    loadChildren: () => import('./modal/update-recipe/update-recipe.module').then( m => m.UpdateRecipePageModule)
-  }
+  
 ];
 
 @NgModule({

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RecipeService } from '../../services/recipe.service';
 import { ModalController } from '@ionic/angular';
 import { UpdateRecipePage } from 'src/app/modal/update-recipe/update-recipe.page';
+import { DeletesheetPage } from 'src/app/modal/deletesheet/deletesheet.page';
 
 @Component({
   selector: 'app-recipedetails',
@@ -41,6 +42,18 @@ export class RecipedetailsPage implements OnInit {
         photo: this.fetchedRecipe.photo,
         recipeId: this.fetchedRecipe._id
       }
+    });
+    return await modal.present();
+  }
+
+  async openDeleteModal() {
+    const modal = await this.modalController.create({
+      component: DeletesheetPage,
+      initialBreakpoint: 0.25,
+      componentProps: {
+        recipeId: this.fetchedRecipe._id
+      },
+      breakpoints: [0, 0.25, 1]
     });
     return await modal.present();
   }

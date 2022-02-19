@@ -3,9 +3,11 @@
     <ion-buttons (click)="openModal()" slot="start" *ngIf="!isLoading">
       <ion-icon name="create-outline" color="secondary"></ion-icon>
     </ion-buttons>
-    <ion-buttons slot="end" *ngIf="!isLoading">
+
+    <ion-buttons (click)="openDeleteModal()" slot="end" *ngIf="!isLoading">
       <ion-icon name="trash-outline" color="danger"></ion-icon>
     </ion-buttons>
+
     <ion-title>{{fetchedRecipe.name}}</ion-title>
   </ion-toolbar>
 </ion-header>

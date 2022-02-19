@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { RecipeService } from 'src/app/services/recipe.service';
+import { ToastService } from 'src/app/services/toast.service';
+
 @Component({
   selector: 'app-update-recipe',
   templateUrl: './update-recipe.page.html',
@@ -13,28 +15,29 @@ export class UpdateRecipePage implements OnInit {
   photo;
   recipeId;
 
-
-  // updateData: any = {
-  //   name: '',
-  //   method: '',
-  //   ingredient: '',
-  //   photo: ''
-  // };
-  constructor(private modalController: ModalController, private recipeService: RecipeService) { }
+  constructor(private modalController: ModalController, 
+    private recipeService: RecipeService, 
+    private toastService: ToastService,
+    ) { }
 
   ngOnInit() {
-    console.log(`${this.recipeId}`)
+
   }
 
   updateRecipe() {
     const updateData = {
       name: this.name,
       method: this.method,
-      ingredient: this.ingredient
+      ingredient: this.ingredient,
+      photo: this.photo
     }
-    console.log(updateData)
+  
     this.recipeService.updateRecipe(this.recipeId, updateData).subscribe((res:any) => {
-      console.log(res)
+      if(res.message === 'successful') {
+        this.toastService.presentToast("Recipe updated successfully.")
+      }
+    }, (error:any) => {
+      this.toastService.presentToast("An error occured, try again.")
     })
   }
 
