@@ -24,3 +24,13 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+@font-face {
+    font-family: Brand-Bold;
+    src: url('./assets/fonts/bolt-semibold.ttf');
+}
+
+@font-face {
+    font-family: Brand-Regular;
+    src: url('./assets/fonts/bolt-regular.ttf');
+}
