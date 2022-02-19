@@ -16,4 +16,8 @@ export class RecipeService {
   getRecipe(recipeId:string) {
     return this.service.get(`/api/v1/recipe/${recipeId}`)
   }
+
+  updateRecipe(recipeId:string, updateData:any) {
+    return this.service.update(`/api/v1/recipe/${recipeId}`, updateData)
+  }
 }

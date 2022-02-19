@@ -23,4 +23,19 @@ export class HttpService {
     const url = environment.apiUrl + apiName;
     return this.http.get(url);
   }
+
+  delete(apiName: string) {
+    const url = environment.apiUrl + apiName;
+    return this.http.delete(url);
+  }
+
+  update(apiName: string, data: any) {
+    const HttpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+      const url = environment.apiUrl + apiName;
+      return this.http.put(url, JSON.stringify(data), HttpOptions)
+    }
 }

@@ -30,9 +30,17 @@ export class RecipedetailsPage implements OnInit {
       })
     })
   }
+
   async openModal() {
     const modal = await this.modalController.create({
       component: UpdateRecipePage,
+      componentProps: {
+        name: this.fetchedRecipe.name,
+        method: this.fetchedRecipe.method,
+        ingredient: this.fetchedRecipe.ingredient,
+        photo: this.fetchedRecipe.photo,
+        recipeId: this.fetchedRecipe._id
+      }
     });
     return await modal.present();
   }
