@@ -7,21 +7,23 @@
 </ion-header>
 
 <ion-content padding='true'>
-<div class="ion-text-center">
-  <h1>Sign in</h1>
+  <div [ngStyle]="{height: '70px'}" class="h-2"></div>
+<div class="ion-text-center h-7">
+  <h1 [ngStyle]="{fontSize: '25px', fontFamily: 'Brand-Bold'}" class="test">Sign in</h1>
 </div>
-<form>
+<form class="container px-3">
   <ion-list>
-    <ion-item>
-      <ion-label position="stacked">Email</ion-label>
-      <ion-input autocomplete="off" type="email" name="email" [(ngModel)]="postData.email"></ion-input>
+    <ion-item class="pb-3">
+      <ion-label [ngStyle]="{fontSize: '14px'}" position="stacked">Email address</ion-label>
+      <ion-input autocomplete="off" type="email" clearInput name="email" [(ngModel)]="postData.email"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">Password</ion-label>
-      <ion-input autocomplete="off" type="password" name="password" [(ngModel)]="postData.password"></ion-input>
+    <ion-item class="pb-5">
+      <ion-label [ngStyle]="{fontSize: '14px'}" position="stacked">Password</ion-label>
+      <ion-input autocomplete="off" type="password" clearInput name="password" [(ngModel)]="postData.password"></ion-input>
     </ion-item>
-    <ion-button expand="block" share="round" color="success" (click)="_login()">{{!isLoggedIn ? 'Login': 'Loading...'}}</ion-button>
+
+    <ion-button expand="block" shape="round" fill="outline"color="success" (click)="_login()">{{!isLoggedIn ? 'LOGIN': 'Loading...'}}</ion-button>
   </ion-list>
 </form>
 </ion-content>
