@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "https://otitoju-server.herokuapp.com"
+  apiUrl: "https://otitoju-server.herokuapp.com",
+  mapKey: "AIzaSyBPKWOdx80KeGTgqDoUS-Vo8BL6L48wfko"
 };
 
 /*

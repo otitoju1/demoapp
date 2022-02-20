@@ -13,6 +13,7 @@ export class AppComponent {
     { title:"Login", url:"login", icon:"arrow-forward-circle" },
     { title:"Gallery", url:"gallery", icon:"images" },
     { title:"Recipes", url:"recipes", icon:"fast-food", },
+    { title:"Map Rider", url:"map", icon:"map", },
     // { title:"Logout", url:"lo", icon:"power", },
   ];
   public labels = [ ];

@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'recipedetails/:recipeId',
     loadChildren: () => import('./pages/recipedetails/recipedetails.module').then( m => m.RecipedetailsPageModule)
   },
+  {
+    path: 'map',
+    loadChildren: () => import('./pages/map/map.module').then( m => m.MapPageModule)
+  },
   
 ];
 
