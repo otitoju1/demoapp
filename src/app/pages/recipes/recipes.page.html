@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-buttons slot="end" color="primary" (click)="openModal()">
+    <ion-buttons *appHasPermission="['read', 'write']" slot="end" color="primary" (click)="openModal()">
        Add Recipe <ion-icon name="add-outline"></ion-icon>
     </ion-buttons>
     

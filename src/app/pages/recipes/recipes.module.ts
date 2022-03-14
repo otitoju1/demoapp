@@ -8,12 +8,14 @@ import { RecipesPageRoutingModule } from './recipes-routing.module';
 
 import { RecipesPage } from './recipes.page';
 import { RegistermodalPage } from '../../modal/registermodal/registermodal.page'
+import { SharedDirectivesModules } from 'src/app/directives/shared-directives.modules';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RecipesPageRoutingModule
+    RecipesPageRoutingModule,
+    SharedDirectivesModules
   ],
   declarations: [RecipesPage]
 })

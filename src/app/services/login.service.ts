@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpService } from './http.service';
 import { TokenStorageService } from './tokenStorage.service';
 import { AuthConstants } from '../config/auth-constants';
+import { Plugins } from '@capacitor/core';
+import { Storage } from '@capacitor/storage';
+
+//const { Storage } = Plugins;
 
 @Injectable({
   providedIn: 'root'

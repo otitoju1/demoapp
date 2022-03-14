@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TokenStorageService } from './services/tokenStorage.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -14,9 +15,14 @@ export class AppComponent {
     { title:"Gallery", url:"gallery", icon:"images" },
     { title:"Recipes", url:"recipes", icon:"fast-food", },
     { title:"Map Rider", url:"map", icon:"map", },
-    // { title:"Logout", url:"lo", icon:"power", },
+    { title:"Logout", url:this.logout(), icon:"power", },
   ];
+  
   public labels = [ ];
   
-  constructor() {}
+  constructor(private storageService: TokenStorageService) {}
+
+  logout() {
+    this.storageService.logOut()
+  }
 }

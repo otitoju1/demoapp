@@ -5,6 +5,7 @@ import { AuthConstants } from 'src/app/config/auth-constants';
 import { Router } from '@angular/router'
 import { ToastService } from 'src/app/services/toast.service';
 import { LoadingController } from '@ionic/angular';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -54,15 +55,10 @@ export class LoginPage implements OnInit {
     this.isLoggedIn = true;
     if(this.validateInputs()) {
       this.service.login(this.postData).subscribe((res:any) => {
-        console.log(res);
         if(res) {
           // store the data
-          // this.tokenStorage.store(AuthConstants.AUTH, res.token)
-          this.isLoggedIn = false;
-          this.tokenStorage.saveUser(AuthConstants.TOKEN_KEY, res.token)
-          this.tokenStorage.saveUser(AuthConstants.USER_KEY, res.info)
-          this.tokenStorage.saveQR(AuthConstants.QR_DATA, res.qrcode)
-          this.router.navigate(['/icons'])
+          this.tokenStorage.storeUser(res.info)
+          this.router.navigateByUrl("/recipes", { replaceUrl: true });
         }
         else {
           this.toastService.presentToast(res.message)
@@ -79,6 +75,36 @@ export class LoginPage implements OnInit {
       this.isLoggedIn = false;
     }
   }
+
+  // _login() {
+  //   this.isLoggedIn = true;
+  //   if(this.validateInputs()) {
+  //     this.service.login(this.postData).subscribe((res:any) => {
+  //       console.log(res);
+  //       if(res) {
+  //         // store the data
+  //         // this.tokenStorage.store(AuthConstants.AUTH, res.token)
+  //         this.isLoggedIn = false;
+  //         this.tokenStorage.saveUser(AuthConstants.TOKEN_KEY, res.token)
+  //         this.tokenStorage.saveUser(AuthConstants.USER_KEY, res.info)
+  //         this.tokenStorage.saveQR(AuthConstants.QR_DATA, res.qrcode)
+  //         this.router.navigate(['/icons'])
+  //       }
+  //       else {
+  //         this.toastService.presentToast(res.message)
+  //         this.isLoggedIn = false;
+  //       }
+  //     }, (error:any) => {
+  //       console.log(error)
+  //       this.toastService.presentToast(error.message)
+  //       this.isLoggedIn = false;
+  //     })
+  //   }
+  //   else {
+  //     this.toastService.presentToast('Please enter email or password')
+  //     this.isLoggedIn = false;
+  //   }
+  // }
 
   
 

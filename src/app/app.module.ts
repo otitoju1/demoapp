@@ -8,10 +8,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { DisableRoleDirective } from './directives/disable-role.directive';
+import { HasPermissionDirective } from './directives/has-permission.directive';
 
 
 @NgModule({
-  declarations: [AppComponent,],
+  declarations: [AppComponent, DisableRoleDirective, HasPermissionDirective,],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ServiceWorkerModule.register('ngsw-worker.js', {
   enabled: environment.production,
